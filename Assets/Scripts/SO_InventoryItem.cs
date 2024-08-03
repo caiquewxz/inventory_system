@@ -2,6 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+[System.Serializable]
+public enum ItemType
+{
+    Potion,
+    Weapon,
+    Money
+}
 [CreateAssetMenu(fileName = "NewInventoryItem", menuName = "ScriptableObjects/NewItem", order = 1)]
 public class SO_InventoryItem : ScriptableObject
 {
@@ -11,4 +18,5 @@ public class SO_InventoryItem : ScriptableObject
     public bool stackable;
     public Sprite sprite;
     public GameObject collectablePrefab;
+    public ItemType  itemType;
 }
