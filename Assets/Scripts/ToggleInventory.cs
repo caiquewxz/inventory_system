@@ -5,11 +5,15 @@ using UnityEngine;
 public class ToggleInventory : MonoBehaviour
 {
     public GameObject inventoryObject;
-    private bool isOpen;
+    public static bool isOpen;
+    private CanvasRenderer[] allSlots;
+    
     // Start is called before the first frame update
     void Start()
     {
-        
+        isOpen = false;
+        allSlots = inventoryObject.GetComponentsInChildren<CanvasRenderer>();
+        Close();
     }
 
     // Update is called once per frame
@@ -32,11 +36,21 @@ public class ToggleInventory : MonoBehaviour
 
     void Open()
     {
-        inventoryObject.SetActive(true);
+        foreach (CanvasRenderer slot in allSlots)
+        {
+            slot.SetAlpha(1f);
+        }
+        Cursor.visible = true;
+        Cursor.lockState = CursorLockMode.None;
     }
 
     void Close()
     {
-        inventoryObject.SetActive(false);
+        foreach (CanvasRenderer slot in allSlots)
+        {
+            slot.SetAlpha(.0f);
+        }
+        Cursor.visible = false;
+        Cursor.lockState = CursorLockMode.Locked;
     }
 }

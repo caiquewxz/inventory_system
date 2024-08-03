@@ -23,7 +23,8 @@ public class PlayerMovement : MonoBehaviour
     void Update()
     {
         HandleMovement();
-        HandleCamera();
+        if(!ToggleInventory.isOpen)
+            HandleCamera();
     }
 
     void HandleMovement()
