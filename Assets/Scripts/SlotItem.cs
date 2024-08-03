@@ -9,7 +9,7 @@ public class SlotItem : MonoBehaviour
 
     public SO_InventoryItem itemData;
     public ItemType itemType;
-
+    public Text quantityText;
     public int quantity;
     public Image slotImage;
 }

@@ -24,22 +24,43 @@ public class Inventory : MonoBehaviour
 
     public void CollectItem(Collectable collectable)
     {
-        SlotItem emptySlot = GetFirstEmptySlot();
-        if (emptySlot)
+        SlotItem availableSlot = GetFirstAvailableSlot(collectable);
+        if (availableSlot)
         {
-            emptySlot.occupied = true;
-            emptySlot.slotImage.sprite = collectable.itemData.sprite;
-            emptySlot.itemData = collectable.itemData;
-            emptySlot.quantity = collectable.quantity;
+            availableSlot.occupied = true;
+            availableSlot.slotImage.sprite = collectable.itemData.sprite;
+            availableSlot.itemData = collectable.itemData;
+            availableSlot.quantity += collectable.quantity;
+
+            //se for maior que a quantidade máxima por slot, ir para próximo slot
+            if (availableSlot.quantity > collectable.itemData.maxQuantity)
+            {
+                collectable.quantity = availableSlot.quantity - collectable.itemData.maxQuantity;
+                availableSlot.quantity = collectable.itemData.maxQuantity;
+                CollectItem(collectable);
+            }
+            
+            if (availableSlot.itemData.stackable)
+            {
+                availableSlot.quantityText.text = availableSlot.quantity.ToString();
+            }
+            else
+            {
+                availableSlot.quantityText.text = "";
+            }
+            
             Destroy(collectable.gameObject);
         }
     }
 
-    private SlotItem GetFirstEmptySlot()
+    private SlotItem GetFirstAvailableSlot(Collectable collectable)
     {
         foreach(SlotItem slot in slots)
         {
-            if (!slot.occupied)
+            bool isSameItem = slot.itemData && collectable.itemData.name.Equals(slot.itemData.name);
+            bool isStackable = collectable.itemData.stackable;
+            bool hasSpaceAvailable = slot.quantity < collectable.itemData.maxQuantity;
+            if (!slot.occupied || (isSameItem && isStackable && hasSpaceAvailable))
             {
                 return slot;
             }
