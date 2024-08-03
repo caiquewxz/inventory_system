@@ -9,6 +9,6 @@ public class SO_InventoryItem : ScriptableObject
     public string description;
     public int maxQuantity;
     public bool stackable;
-    public Texture2D sprite;
+    public Sprite sprite;
     public GameObject collectablePrefab;
 }
