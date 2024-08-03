@@ -12,6 +12,18 @@ public class SlotItem : MonoBehaviour, IPointerDownHandler
     public Text quantityText;
     public int quantity;
     public Image slotImage;
+    public float dropForce = 100f;
+
+    private Transform dropReference;
+    void Start()
+    {
+        GameObject dropReferenceObject = GameObject.FindGameObjectWithTag("DropReference");
+        if (dropReferenceObject)
+        {
+            dropReference = dropReferenceObject.transform;
+        }
+    }
+    //método que verifica se o player clica com o botão esquerdo ou direito nos slots. Se clicar com o botão direito, ele dropa o item, se ele clicar com o esquerdo, ele o usa.
     public void OnPointerDown(PointerEventData eventData)
     {
         if (eventData.button == PointerEventData.InputButton.Right)
@@ -24,9 +36,39 @@ public class SlotItem : MonoBehaviour, IPointerDownHandler
         }
     }
 
+    //método que define a quantidade do item empilhado, alterando a variável de quantidade, e a string que armazena a quantidade que o item carrega.
+    public void SetQuantity(int newQuantity)
+    {
+        quantity = newQuantity;
+        quantityText.text = quantity == 0 ? "" : quantity.ToString();
+    }
+    
+    //método que faz o item ser dropado.
     void DropItem()
     {
-        Debug.Log("Drop");
+        GameObject spawnedCollectable = Instantiate(itemData.collectablePrefab, dropReference.position, dropReference.rotation);
+        //verifica se o item que foi dropado é um coletável.
+        if (spawnedCollectable)
+        {
+            Collectable collectable = spawnedCollectable.GetComponentInChildren<Collectable>();
+            collectable.quantity = quantity;
+
+            Rigidbody rb = spawnedCollectable.GetComponent<Rigidbody>();
+            
+            //depois de pegar o rigidbody do objeto dropado, ele coloca uma força de impulso, o jogando para frente.
+            if (rb)
+            {
+                Vector3 initialForce = PlayerMovement.instance.transform.forward * dropForce;
+                rb.AddForce(initialForce, ForceMode.Impulse);
+            }
+            
+            //ele define a quantidade do item no slot do inventario como zero, desocupa o slot, retira as informações do item, e remove o sprite do slot.
+            SetQuantity(0);
+            occupied = false;
+            itemData = null;
+            slotImage.sprite = null;
+        }
+        
     }
 
     void UseItem()

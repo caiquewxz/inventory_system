@@ -1795,12 +1795,16 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 2242967970214248901, guid: b304aed65f79a4445ba06ea6f683888e, type: 3}
-      propertyPath: m_Name
-      value: Player
+    - target: {fileID: 1320554234467266381, guid: b304aed65f79a4445ba06ea6f683888e, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 1.02
+      objectReference: {fileID: 0}
+    - target: {fileID: 1320554234467266381, guid: b304aed65f79a4445ba06ea6f683888e, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 2.37
       objectReference: {fileID: 0}
     - target: {fileID: 2242967970214248901, guid: b304aed65f79a4445ba06ea6f683888e, type: 3}
-      propertyPath: m_TagString
+      propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
     - target: {fileID: 4068723208016083481, guid: b304aed65f79a4445ba06ea6f683888e, type: 3}
@@ -1842,10 +1846,6 @@ PrefabInstance:
     - target: {fileID: 4068723208016083481, guid: b304aed65f79a4445ba06ea6f683888e, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8160184881682091578, guid: b304aed65f79a4445ba06ea6f683888e, type: 3}
-      propertyPath: m_TagString
-      value: Untagged
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

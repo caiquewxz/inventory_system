@@ -14,6 +14,21 @@ public class PlayerMovement : MonoBehaviour
     private Vector3 moveDirection = Vector3.zero;
     private CharacterController controller;
 
+    private static PlayerMovement _instance;
+
+    public static PlayerMovement instance
+    {
+        get
+        {
+            if (!_instance)
+            {
+                _instance = FindObjectOfType<PlayerMovement>();
+            }
+
+            return _instance;
+        }
+    }
+
     void Start()
     {
         controller = GetComponent<CharacterController>();

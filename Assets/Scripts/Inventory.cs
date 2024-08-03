@@ -33,27 +33,23 @@ public class Inventory : MonoBehaviour
             availableSlot.occupied = true;
             availableSlot.slotImage.sprite = collectable.itemData.sprite;
             availableSlot.itemData = collectable.itemData;
-            availableSlot.quantity += collectable.quantity;
+            availableSlot.SetQuantity(collectable.quantity + availableSlot.quantity);
 
             //se for maior que a quantidade máxima por slot, ir para próximo slot.
             if (availableSlot.quantity > collectable.itemData.maxQuantity)
             {
                 collectable.quantity = availableSlot.quantity - collectable.itemData.maxQuantity;
-                availableSlot.quantity = collectable.itemData.maxQuantity;
+                availableSlot.SetQuantity(collectable.itemData.maxQuantity);
                 CollectItem(collectable);
             }
 
-            //verifica se o objeto é impilhável e transforma a quantidade do objeto em string.
-            if (availableSlot.itemData.stackable)
-            {
-                availableSlot.quantityText.text = availableSlot.quantity.ToString();
-            }
-            else
+            //vse não for stackavel, esconde o texto de quantity
+            if (!availableSlot.itemData.stackable)
             {
                 availableSlot.quantityText.text = "";
             }
             
-            Destroy(collectable.gameObject);
+            Destroy(collectable.transform.parent.gameObject);
         }
     }
 
@@ -62,7 +58,7 @@ public class Inventory : MonoBehaviour
     {
         foreach(SlotItem slot in slots)
         {
-            bool isSameItem = slot.itemData && collectable.itemData.name.Equals(slot.itemData.name);
+            bool isSameItem = slot.itemData && collectable.itemData.name.Equals(slot.itemData.name); 
             bool isStackable = collectable.itemData.stackable;
             bool hasSpaceAvailable = slot.quantity < collectable.itemData.maxQuantity;
             if (!slot.occupied || (isSameItem && isStackable && hasSpaceAvailable))
