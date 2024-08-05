@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f6e4164f3528de448842addcdc63b835, type: 3}
+  m_Name: Money
+  m_EditorClassIdentifier: 
+  name: Dinheiro
+  description: "C\xE9dulas de dinheiro para fazer suas compras."
+  maxQuantity: 100
+  stackable: 1
+  sprite: {fileID: 21300000, guid: 19b9124b9bb4ceb428a3727025b997cf, type: 3}
+  collectablePrefab: {fileID: 2515543518179228449, guid: c93ba0ce431552146a896352ba6e3543, type: 3}
+  itemType: 2

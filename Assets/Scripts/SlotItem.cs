@@ -13,8 +13,9 @@ public class SlotItem : MonoBehaviour, IPointerDownHandler
     public int quantity;
     public Image slotImage;
     public float dropForce = 100f;
-
+    
     private Transform dropReference;
+    private Health healthComponent;
     void Start()
     {
         GameObject dropReferenceObject = GameObject.FindGameObjectWithTag("DropReference");
@@ -22,6 +23,8 @@ public class SlotItem : MonoBehaviour, IPointerDownHandler
         {
             dropReference = dropReferenceObject.transform;
         }
+
+        healthComponent = GetComponent<Health>();
     }
     //método que verifica se o player clica com o botão esquerdo ou direito nos slots. Se clicar com o botão direito, ele dropa o item, se ele clicar com o esquerdo, ele o usa.
     public void OnPointerDown(PointerEventData eventData)
@@ -73,6 +76,14 @@ public class SlotItem : MonoBehaviour, IPointerDownHandler
 
     void UseItem()
     {
-        Debug.Log("Use");
+        if (itemType == ItemType.Potion)
+        {
+            Health.playerHp += 20;
+        }
+    }
+
+    void ShowItemDescription()
+    {
+        
     }
 }
