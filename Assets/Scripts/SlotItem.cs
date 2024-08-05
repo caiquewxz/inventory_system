@@ -44,6 +44,12 @@ public class SlotItem : MonoBehaviour, IPointerDownHandler
     {
         quantity = newQuantity;
         quantityText.text = quantity == 0 ? "" : quantity.ToString();
+        if (quantity <= 0)
+        {
+            occupied = false;
+            slotImage.sprite = null;
+            itemData = null;
+        }
     }
     
     //método que faz o item ser dropado.
@@ -79,6 +85,7 @@ public class SlotItem : MonoBehaviour, IPointerDownHandler
         if (itemType == ItemType.Potion)
         {
             Health.playerHp += 20;
+            SetQuantity(quantity - 1);
         }
     }
 
