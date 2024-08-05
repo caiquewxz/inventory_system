@@ -2,18 +2,19 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.PlayerLoop;
 using UnityEngine.UI;
 
 public class SlotItem : MonoBehaviour, IPointerDownHandler
 {
     public bool occupied;
     public SO_InventoryItem itemData;
-    public ItemType itemType;
     public Text quantityText;
     public int quantity;
     public Image slotImage;
     public float dropForce = 100f;
-    
+    public TooltipHandler tooltipHandler;
+
     private Transform dropReference;
     private Health healthComponent;
     void Start()
@@ -24,8 +25,9 @@ public class SlotItem : MonoBehaviour, IPointerDownHandler
             dropReference = dropReferenceObject.transform;
         }
 
-        healthComponent = GetComponent<Health>();
+        tooltipHandler = GetComponent<TooltipHandler>();
     }
+
     //método que verifica se o player clica com o botão esquerdo ou direito nos slots. Se clicar com o botão direito, ele dropa o item, se ele clicar com o esquerdo, ele o usa.
     public void OnPointerDown(PointerEventData eventData)
     {
@@ -82,15 +84,10 @@ public class SlotItem : MonoBehaviour, IPointerDownHandler
 
     void UseItem()
     {
-        if (itemType == ItemType.Potion)
+        if (itemData.itemType == ItemType.Potion)
         {
             Health.playerHp += 20;
             SetQuantity(quantity - 1);
         }
-    }
-
-    void ShowItemDescription()
-    {
-        
     }
 }
