@@ -13,7 +13,7 @@ public class SlotItem : MonoBehaviour
     public int quantity;
     public Image slotImage;
     public float dropForce = 100f;
-    public GameObject collectablePrefab;
+    [HideInInspector] public GameObject collectablePrefab;
 
     private Transform dropReference;
     private Health healthComponent;
