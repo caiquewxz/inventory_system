@@ -69,7 +69,6 @@ public class Inventory : MonoBehaviour
         }
     }
 
-    //metodo para saber se o se cada slot está ocupado. Se não for, ele verifica se é o mesmo item que está coletando, se é impilhável e se tem espaço disponível no slot.
     private SlotItem GetFirstAvailableSlot(Collectable collectable)
     {
         foreach(SlotItem slot in slots)
