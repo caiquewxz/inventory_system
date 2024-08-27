@@ -6,12 +6,10 @@ public class ToggleInventory : MonoBehaviour
 {
     public GameObject inventoryObject;
     public static bool isOpen;
-    private SlotItem[] allSlots;
     
     void Start()
     {
         isOpen = false;
-        allSlots = inventoryObject.GetComponentsInChildren<SlotItem>();
         Close();
     }
 
@@ -35,27 +33,13 @@ public class ToggleInventory : MonoBehaviour
 
     void Open()
     {
-        foreach (SlotItem slot in allSlots)
-        {
-            CanvasRenderer[] allRederers = slot.GetComponentsInChildren<CanvasRenderer>();
-            foreach (CanvasRenderer renderer in allRederers)
-            {
-                renderer.SetAlpha(1f);
-            }
-        }
+        inventoryObject.SetActive(true);
         Cursor.visible = true;
         Cursor.lockState = CursorLockMode.None;
     }
     void Close()
     {
-        foreach (SlotItem slot in allSlots)
-        {
-            CanvasRenderer[] allRederers = slot.GetComponentsInChildren<CanvasRenderer>();
-            foreach (CanvasRenderer renderer in allRederers)
-            {
-                renderer.SetAlpha(.0f);
-            }
-        }
+        inventoryObject.SetActive(false);
         Cursor.visible = false;
         Cursor.lockState = CursorLockMode.Locked;
     }
