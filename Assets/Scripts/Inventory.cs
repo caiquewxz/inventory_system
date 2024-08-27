@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -22,7 +23,22 @@ public class Inventory : MonoBehaviour
         }
     }
     public List<SlotItem> slots = new();
- 
+
+    private void Awake()
+    {
+        if (instance != this)
+        {
+            if (instance.gameObject != gameObject)
+                Destroy(gameObject);
+
+            Destroy(this);
+        }
+        else
+        {
+            DontDestroyOnLoad(gameObject);
+        }
+    }
+
     //método de coletar item.
     public void CollectItem(Collectable collectable)
     {
