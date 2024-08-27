@@ -202,3 +202,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   quantity: 1
   itemData: {fileID: 11400000, guid: 860560bfe9ef4cc42815684a8258b8e4, type: 2}
+  collectablePrefab: {fileID: 30523404022518665}

@@ -7,7 +7,7 @@ public class Collectable : MonoBehaviour
 {
     public int quantity = 1;
     public SO_InventoryItem itemData;
-    
+
     private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Player"))

@@ -439,18 +439,6 @@ MonoBehaviour:
   _playerHp: 50
   maxHp: 100
   playerHpText: {fileID: 1810939424}
---- !u!114 &169664236
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 169664231}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a80d7f789e809b64da4869e31ea432d6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &177447923
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -836,10 +824,24 @@ MonoBehaviour:
   m_GameObject: {fileID: 462405922}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 990ecca6fc5b34a4db7e6286136858b7, type: 3}
+  m_Script: {fileID: 11500000, guid: babb0eec427e7c64b8ccb0d8269705ee, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  slots:
+  - {fileID: 2078041253}
+  - {fileID: 364302415}
+  - {fileID: 138513733}
+  - {fileID: 1272482818}
+  - {fileID: 1435984492}
+  - {fileID: 1683961522}
+  - {fileID: 264868476}
+  - {fileID: 1816026607}
+  - {fileID: 552743266}
+  - {fileID: 528388221}
+  - {fileID: 1948444360}
+  - {fileID: 1426272380}
   inventoryObject: {fileID: 1340010535315528651}
+  isOpen: 0
 --- !u!224 &473577598 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 4543655046379752976, guid: db8ee20e967d9a941bb1747af8f1f396, type: 3}
@@ -2826,31 +2828,6 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 4543655046379752976, guid: db8ee20e967d9a941bb1747af8f1f396, type: 3}
   m_PrefabInstance: {fileID: 7356739323384708467}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &698786609418853855
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1340010535315528651}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: babb0eec427e7c64b8ccb0d8269705ee, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  slots:
-  - {fileID: 2078041253}
-  - {fileID: 364302415}
-  - {fileID: 138513733}
-  - {fileID: 1272482818}
-  - {fileID: 1435984492}
-  - {fileID: 1683961522}
-  - {fileID: 264868476}
-  - {fileID: 1816026607}
-  - {fileID: 552743266}
-  - {fileID: 528388221}
-  - {fileID: 1948444360}
-  - {fileID: 1426272380}
 --- !u!1001 &924573603971221508
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3176,7 +3153,6 @@ GameObject:
   m_Component:
   - component: {fileID: 9021629779459881564}
   - component: {fileID: 114331090115150073}
-  - component: {fileID: 698786609418853855}
   m_Layer: 5
   m_Name: Inventory
   m_TagString: Untagged
@@ -3689,9 +3665,6 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 2242967970214248901, guid: b304aed65f79a4445ba06ea6f683888e, type: 3}
       insertIndex: -1
       addedObject: {fileID: 169664232}
-    - targetCorrespondingSourceObject: {fileID: 2242967970214248901, guid: b304aed65f79a4445ba06ea6f683888e, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 169664236}
   m_SourcePrefab: {fileID: 100100000, guid: b304aed65f79a4445ba06ea6f683888e, type: 3}
 --- !u!1001 &5343899434960646267
 PrefabInstance:

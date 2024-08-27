@@ -13,6 +13,7 @@ public class SlotItem : MonoBehaviour
     public int quantity;
     public Image slotImage;
     public float dropForce = 100f;
+    public GameObject collectablePrefab;
 
     private Transform dropReference;
     private Health healthComponent;
@@ -55,7 +56,8 @@ public class SlotItem : MonoBehaviour
     //método que faz o item ser dropado.
     void DropItem()
     {
-        GameObject spawnedCollectable = Instantiate(itemData.collectablePrefab, dropReference.position, dropReference.rotation);
+        GameObject spawnedCollectable = Instantiate(collectablePrefab, dropReference.position, dropReference.rotation);
+        spawnedCollectable.SetActive(true);
         //verifica se o item que foi dropado é um coletável.
         if (spawnedCollectable)
         {

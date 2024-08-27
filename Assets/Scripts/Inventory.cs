@@ -85,6 +85,8 @@ public class Inventory : MonoBehaviour
             availableSlot.occupied = true;
             availableSlot.slotImage.sprite = collectable.itemData.sprite;
             availableSlot.itemData = collectable.itemData;
+            availableSlot.collectablePrefab = Instantiate(collectable.transform.parent.gameObject);
+            availableSlot.collectablePrefab.SetActive(false);
             availableSlot.SetQuantity(collectable.quantity + availableSlot.quantity);
 
             //se for maior que a quantidade máxima por slot, ir para próximo slot.
