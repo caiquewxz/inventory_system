@@ -84,7 +84,7 @@ public class SlotItem : MonoBehaviour
 
     void UseItem()
     {
-        if (itemData.itemType == ItemType.Potion)
+        if (itemData && itemData.itemType == ItemType.Potion)
         {
             Health.Instance.PlayerHP += itemData.Value;
             SetQuantity(quantity - 1);
