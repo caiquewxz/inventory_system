@@ -6,13 +6,13 @@ public class ToggleInventory : MonoBehaviour
 {
     public GameObject inventoryObject;
     public static bool isOpen;
-    private CanvasRenderer[] allSlots;
+    private SlotItem[] allSlots;
     
     // Start is called before the first frame update
     void Start()
     {
         isOpen = false;
-        allSlots = inventoryObject.GetComponentsInChildren<CanvasRenderer>();
+        allSlots = inventoryObject.GetComponentsInChildren<SlotItem>();
         Close();
     }
 
@@ -39,9 +39,13 @@ public class ToggleInventory : MonoBehaviour
     void Open()
     {
         //muda o alpha de cada slot no canvas, deixando todos os slots e o cursor do mouse visíveis, e também destrava o movimento do cursor.
-        foreach (CanvasRenderer slot in allSlots)
+        foreach (SlotItem slot in allSlots)
         {
-            slot.SetAlpha(1f);
+            CanvasRenderer[] allRederers = slot.GetComponentsInChildren<CanvasRenderer>();
+            foreach (CanvasRenderer renderer in allRederers)
+            {
+                renderer.SetAlpha(1f);
+            }
         }
         Cursor.visible = true;
         Cursor.lockState = CursorLockMode.None;
@@ -50,9 +54,13 @@ public class ToggleInventory : MonoBehaviour
     void Close()
     {
         //muda o alpha de cada slot no canvas, deixando todos os slots e o cursor do mouse invisíveis, e trava o cursor do mouse no centro da tela.
-        foreach (CanvasRenderer slot in allSlots)
+        foreach (SlotItem slot in allSlots)
         {
-            slot.SetAlpha(.0f);
+            CanvasRenderer[] allRederers = slot.GetComponentsInChildren<CanvasRenderer>();
+            foreach (CanvasRenderer renderer in allRederers)
+            {
+                renderer.SetAlpha(.0f);
+            }
         }
         Cursor.visible = false;
         Cursor.lockState = CursorLockMode.Locked;
