@@ -10,7 +10,7 @@ public class Inventory : MonoBehaviour
     private static Inventory _instance;
 
     //singleton para acessar de qualquer lugar e haver apenas uma instância da classe Inventory.
-    public static Inventory instance
+    public static Inventory Instance
     {
         get
         {
@@ -26,9 +26,9 @@ public class Inventory : MonoBehaviour
 
     private void Awake()
     {
-        if (instance != this)
+        if (Instance != this)
         {
-            if (instance.gameObject != gameObject)
+            if (Instance.gameObject != gameObject)
                 Destroy(gameObject);
 
             Destroy(this);

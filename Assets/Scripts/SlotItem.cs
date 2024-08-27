@@ -86,7 +86,7 @@ public class SlotItem : MonoBehaviour, IPointerDownHandler
     {
         if (itemData.itemType == ItemType.Potion)
         {
-            Health.playerHp += itemData.Value;
+            Health.Instance.PlayerHP += itemData.Value;
             SetQuantity(quantity - 1);
         }
     }

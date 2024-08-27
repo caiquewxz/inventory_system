@@ -6,20 +6,57 @@ using UnityEngine.UI;
 
 public class Health : MonoBehaviour
 {
-    public static int playerHp = 50;
+    public int PlayerHP
+    {
+        get => _playerHp;
+        
+        set
+        {
+            _playerHp = value;
+            if (_playerHp > maxHp)
+            {
+                _playerHp = maxHp;
+            }
+            if (playerHpText)
+            {
+                playerHpText.text = "Player's HP: " + _playerHp;
+            }
+            
+        }
+    }
+    [SerializeField] private int _playerHp = 50;
+    
     public int maxHp = 100;
     public Text playerHpText;
     
- void Update()
+    public static Health Instance
     {
-        if (playerHpText)
+        get
         {
-            playerHpText.text = "Player's HP: " + playerHp;
-        }
+            if (!_instance)
+            {
+                _instance = FindObjectOfType<Health>();
+            }
 
-        if (playerHp > maxHp)
-        {
-            playerHp = maxHp;
+            return _instance;
         }
     }
+
+    private static Health _instance;
+    
+    private void Awake()
+    {
+        if (Instance != this)
+        {
+            if (Instance.gameObject != gameObject)
+                Destroy(gameObject);
+
+            Destroy(this);
+            return;
+        }
+        
+        DontDestroyOnLoad(gameObject);
+        PlayerHP = _playerHp;
+    }
+    
 }

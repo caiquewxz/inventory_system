@@ -20,6 +20,6 @@ public class Collectable : MonoBehaviour
     //método que tenta coletar um item através da instancia da classe Inventory, que é um singleton
     public void TryCollectItem()
     {
-        Inventory.instance.CollectItem(this);
+        Inventory.Instance.CollectItem(this);
     }
 }
