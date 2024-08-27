@@ -21,4 +21,8 @@ public class SO_InventoryItem : ScriptableObject
     public Sprite sprite;
     public GameObject collectablePrefab;
     public ItemType  itemType;
+    
+    [Tooltip("usado para lógica do item. Como por exemplo quanto sangue irá ser regenerado por uma poção")]
+    public int Value;
+
 }
