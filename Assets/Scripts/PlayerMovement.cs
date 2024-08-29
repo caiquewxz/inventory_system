@@ -1,3 +1,4 @@
+using UnityEditor.Animations;
 using UnityEngine;
 
 [RequireComponent(typeof(CharacterController))]
@@ -10,9 +11,14 @@ public class PlayerMovement : MonoBehaviour
     public Transform playerCamera;
     public float cameraPitch = 0.0f;
     public float maxLookAngle = 85.0f;
+    public Animator animController;
+    public float animationSmoothFactor = 2;
 
     private Vector3 moveDirection = Vector3.zero;
     private CharacterController controller;
+    private float currentSpeed;
+    private float acceleration = 3f;
+    private Vector3 oldDirection;
 
     private static PlayerMovement _instance;
 
@@ -40,6 +46,23 @@ public class PlayerMovement : MonoBehaviour
         HandleMovement();
         if(!Inventory.Instance.isOpen)
             HandleCamera();
+
+        UpdateAnimationParams();
+    }
+
+    void UpdateAnimationParams()
+    {
+        Vector3 velocityForward = controller.velocity;
+        velocityForward.Scale(transform.forward);
+        
+        Vector3 velocityRight = controller.velocity;
+        velocityRight.Scale(transform.right);
+
+        float speedForward = velocityForward.x + velocityForward.z;
+        float speedRight = velocityRight.x + velocityRight.z;
+
+        animController.SetFloat("SpeedForward", speedForward);
+        animController.SetFloat("SpeedRight", speedRight);
     }
 
     void HandleMovement()
@@ -50,8 +73,19 @@ public class PlayerMovement : MonoBehaviour
             float moveZ = Input.GetAxis("Vertical");
 
             moveDirection = new Vector3(moveX, 0.0f, moveZ);
+            moveDirection.Normalize();
             moveDirection = transform.TransformDirection(moveDirection);
-            moveDirection *= speed;
+            if (moveDirection.magnitude > 0)
+            {
+                currentSpeed += acceleration * Time.deltaTime;
+                if (currentSpeed > speed) currentSpeed = speed;
+            }
+            else
+            {
+                currentSpeed -= acceleration * Time.deltaTime;
+                if (currentSpeed < 0) currentSpeed = 0;
+            }
+            moveDirection *= currentSpeed;
 
             if (Input.GetButton("Jump"))
             {
@@ -60,7 +94,9 @@ public class PlayerMovement : MonoBehaviour
         }
 
         moveDirection.y -= gravity * Time.deltaTime;
-        controller.Move(moveDirection * Time.deltaTime);
+        Vector3 newDirection = Vector3.Lerp(oldDirection, moveDirection, animationSmoothFactor * Time.deltaTime);
+        oldDirection = newDirection;
+        controller.Move(newDirection * Time.deltaTime);
     }
 
     void HandleCamera()
