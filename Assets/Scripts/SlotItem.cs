@@ -30,13 +30,10 @@ public class SlotItem : MonoBehaviour
     //método que verifica se o player clica com o botão esquerdo ou direito nos slots. Se clicar com o botão direito, ele dropa o item, se ele clicar com o esquerdo, ele o usa.
     public void OnPointerDown(PointerEventData eventData)
     {
-        if (eventData.button == PointerEventData.InputButton.Right)
+        if (Inventory.Instance.itemHighlightObject)
         {
-            DropItem();
-        }
-        else if (eventData.button == PointerEventData.InputButton.Left)
-        {
-            UseItem();
+            Inventory.Instance.itemHighlightObject.ShowItem(this);
+            Inventory.Instance.itemHighlightObject.gameObject.SetActive(true);
         }
     }
 
@@ -54,7 +51,7 @@ public class SlotItem : MonoBehaviour
     }
     
     //método que faz o item ser dropado.
-    void DropItem()
+    public void DropItem()
     {
         GameObject spawnedCollectable = Instantiate(collectablePrefab, dropReference.position, dropReference.rotation);
         spawnedCollectable.SetActive(true);
@@ -82,7 +79,7 @@ public class SlotItem : MonoBehaviour
         
     }
 
-    void UseItem()
+    public void UseItem()
     {
         if (itemData && itemData.itemType == ItemType.Potion)
         {

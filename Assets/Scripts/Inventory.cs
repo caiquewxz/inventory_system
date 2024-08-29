@@ -7,6 +7,7 @@ using UnityEngine;
 
 public class Inventory : MonoBehaviour
 {
+
     private static Inventory _instance;
 
     //singleton para acessar de qualquer lugar e haver apenas uma instância da classe Inventory.
@@ -25,6 +26,7 @@ public class Inventory : MonoBehaviour
     public List<SlotItem> slots = new();
     public GameObject inventoryObject;
     public bool isOpen;
+    public ItemHighlight itemHighlightObject;
 
     private void Awake()
     {
@@ -70,6 +72,7 @@ public class Inventory : MonoBehaviour
     }
     void Close()
     {
+        itemHighlightObject.gameObject.SetActive(false);
         inventoryObject.SetActive(false);
         Cursor.visible = false;
         Cursor.lockState = CursorLockMode.Locked;
