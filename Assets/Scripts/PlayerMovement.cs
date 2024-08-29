@@ -86,11 +86,6 @@ public class PlayerMovement : MonoBehaviour
                 if (currentSpeed < 0) currentSpeed = 0;
             }
             moveDirection *= currentSpeed;
-
-            if (Input.GetButton("Jump"))
-            {
-                moveDirection.y = jumpSpeed;
-            }
         }
 
         moveDirection.y -= gravity * Time.deltaTime;
