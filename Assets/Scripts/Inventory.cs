@@ -28,6 +28,7 @@ public class Inventory : MonoBehaviour
     public GameObject inventoryObject;
     public bool isOpen;
     public ItemHighlight itemHighlightObject;
+    public MoneyManager moneyManager;
 
     private void Awake()
     {
@@ -44,6 +45,11 @@ public class Inventory : MonoBehaviour
             isOpen = false;
             Close();
 
+        }
+
+        if (!moneyManager)
+        {
+            moneyManager = FindObjectOfType<MoneyManager>();
         }
     }
 
@@ -97,7 +103,7 @@ public class Inventory : MonoBehaviour
         SlotItem availableSlot = GetFirstAvailableSlot(collectable);
         if (collectable.itemData.itemType == ItemType.Money)
         {
-            MoneyManager.playerMoney += collectable.quantity;
+            moneyManager.playerMoney += collectable.quantity;
         }
 
         if (availableSlot)
@@ -149,8 +155,8 @@ public class Inventory : MonoBehaviour
 
     public bool SpendMoney(int amount)
     {
-        if (MoneyManager.playerMoney < amount) return false;
-
+        if (moneyManager.playerMoney < amount) return false;
+        moneyManager.playerMoney -= amount;
         int debt = -amount;
         foreach (SlotItem item in slots)
         {

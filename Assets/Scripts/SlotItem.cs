@@ -21,6 +21,7 @@ public class SlotItem : MonoBehaviour
 
     private Transform dropReference;
     private Health healthComponent;
+    private MoneyManager moneyManager;
     void Start()
     {
         GameObject dropReferenceObject = GameObject.FindGameObjectWithTag("DropReference");
@@ -28,6 +29,8 @@ public class SlotItem : MonoBehaviour
         {
             dropReference = dropReferenceObject.transform;
         }
+
+        moneyManager = FindObjectOfType<MoneyManager>();
 
     }
 
@@ -70,7 +73,7 @@ public class SlotItem : MonoBehaviour
 
         if (itemData.itemType == ItemType.Money)
         {
-            MoneyManager.playerMoney -= quantity;
+            moneyManager.playerMoney -= quantity;
         }
         
         GameObject spawnedCollectable = Instantiate(collectablePrefab, dropReference.position, dropReference.rotation);

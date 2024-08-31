@@ -51,7 +51,7 @@ public class Shop : MonoBehaviour
             selectedSlot.backgroundImage.color = colorToUncheckSlot;
         }
         selectedSlot = shopSlots[index];
-        shopItemHighlight.ShotItemDescription(shopSlots[index].itemData.description);
+        shopItemHighlight.ShotItemDescription(shopSlots[index].itemData.description + " Custa " + shopSlots[index].itemData.price + " dinheiros.");
         shopItemHighlight.gameObject.SetActive(true);
     }
     
