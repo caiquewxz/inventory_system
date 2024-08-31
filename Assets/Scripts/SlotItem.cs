@@ -58,6 +58,12 @@ public class SlotItem : MonoBehaviour
     {
         Debug.Log(Inventory.Instance.itemHighlightObject.gameObject.name);
         Inventory.Instance.itemHighlightObject.UncheckItemImage();
+
+        if (itemData.itemType == ItemType.Money)
+        {
+            MoneyManager.playerMoney -= quantity;
+        }
+        
         GameObject spawnedCollectable = Instantiate(collectablePrefab, dropReference.position, dropReference.rotation);
         spawnedCollectable.SetActive(true);
         //verifica se o item que foi dropado é um coletável.
@@ -88,7 +94,7 @@ public class SlotItem : MonoBehaviour
     {
         if (itemData && itemData.itemType == ItemType.Potion)
         {
-            Health.Instance.PlayerHP += itemData.Value;
+            Health.Instance.PlayerHP += itemData.value;
             SetQuantity(quantity - 1);
         }
     }

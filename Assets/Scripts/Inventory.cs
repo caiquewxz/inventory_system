@@ -23,6 +23,7 @@ public class Inventory : MonoBehaviour
             return _instance;
         }
     }
+
     public List<SlotItem> slots = new();
     public GameObject inventoryObject;
     public bool isOpen;
@@ -45,7 +46,7 @@ public class Inventory : MonoBehaviour
 
         }
     }
-    
+
     void Update()
     {
         //verifica se a tecla que abre o inventário é pressionada, se for ele inverte o valor de isOpen(variável que define se o inventário está aberto) e se o inventário ja estiver aberto, ele o fecha, e se estiver fechado, ele o abre.
@@ -70,6 +71,7 @@ public class Inventory : MonoBehaviour
         Cursor.visible = true;
         Cursor.lockState = CursorLockMode.None;
     }
+
     void Close()
     {
         itemHighlightObject.gameObject.SetActive(false);
@@ -82,6 +84,11 @@ public class Inventory : MonoBehaviour
     public void CollectItem(Collectable collectable)
     {
         SlotItem availableSlot = GetFirstAvailableSlot(collectable);
+        if (collectable.itemData.itemType == ItemType.Money)
+        {
+            MoneyManager.playerMoney += collectable.quantity;
+        }
+
         if (availableSlot)
         {
             //deixa o slot ocupado, pega o sprite, descrição e quantidade do objeto que o player está coletando.
@@ -105,18 +112,18 @@ public class Inventory : MonoBehaviour
             {
                 availableSlot.quantityText.text = "";
             }
-            
+
             Destroy(collectable.transform.parent.gameObject);
-            
+
             itemHighlightObject.UncheckItemImage();
         }
     }
 
     private SlotItem GetFirstAvailableSlot(Collectable collectable)
     {
-        foreach(SlotItem slot in slots)
+        foreach (SlotItem slot in slots)
         {
-            bool isSameItem = slot.itemData && collectable.itemData.name.Equals(slot.itemData.name); 
+            bool isSameItem = slot.itemData && collectable.itemData.name.Equals(slot.itemData.name);
             bool isStackable = collectable.itemData.stackable;
             bool hasSpaceAvailable = slot.quantity < collectable.itemData.maxQuantity;
             if (!slot.occupied || (isSameItem && isStackable && hasSpaceAvailable))
@@ -126,5 +133,28 @@ public class Inventory : MonoBehaviour
         }
 
         return null;
+    }
+
+    public bool SpendMoney(int amount)
+    {
+        if (MoneyManager.playerMoney < amount) return false;
+
+        int debt = -amount;
+        foreach (SlotItem item in slots)
+        {
+            if (item.itemData.itemType == ItemType.Money)
+            {
+                debt += item.quantity;
+                
+                item.SetQuantity(debt > 0 ? debt : 0);
+
+                if (debt >= 0)
+                {
+                    break;
+                }
+            }
+        }
+
+        return true;
     }
 }

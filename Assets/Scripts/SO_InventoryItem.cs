@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 [System.Serializable]
 public enum ItemType
@@ -18,8 +19,9 @@ public class SO_InventoryItem : ScriptableObject
     public bool stackable;
     public Sprite sprite;
     public ItemType  itemType;
+    public int price;
     
-    [Tooltip("usado para lógica do item. Como por exemplo quanto sangue irá ser regenerado por uma poção")]
-    public int Value;
+    [FormerlySerializedAs("Value")] [Tooltip("usado para lógica do item. Como por exemplo quanto sangue irá ser regenerado por uma poção")]
+    public int value;
 
 }
