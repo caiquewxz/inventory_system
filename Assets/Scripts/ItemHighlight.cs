@@ -8,8 +8,8 @@ using UnityEngine.UI;
 public class ItemHighlight : MonoBehaviour
 {
     [SerializeField] private Text descriptionText;
-    [SerializeField] public Color colorToUncheckSlot;
-    [SerializeField] public Color colorToHighlightSlot;
+    [SerializeField] private Color colorToUncheckSlot;
+    [SerializeField] private Color colorToHighlightSlot;
     public static SlotItem highlightedItem;
     private SlotItem previousItem;
 

@@ -14,7 +14,10 @@ public class SlotItem : MonoBehaviour
     public Image slotImage;
     public Image backgroundImage;
     public float dropForce = 100f;
-    [HideInInspector] public GameObject collectablePrefab;
+    public bool isShopSlot;
+    public int shopIndex;
+    [SerializeField] private Shop shop;
+    [SerializeField] public GameObject collectablePrefab;
 
     private Transform dropReference;
     private Health healthComponent;
@@ -31,6 +34,12 @@ public class SlotItem : MonoBehaviour
     //método que verifica se o player clica com o botão esquerdo ou direito nos slots. Se clicar com o botão direito, ele dropa o item, se ele clicar com o esquerdo, ele o usa.
     public void OnPointerDown(PointerEventData eventData)
     {
+        if (isShopSlot)
+        {
+            shop.SelectItem(shopIndex);
+            return;
+        }
+        
         if (Inventory.Instance.itemHighlightObject)
         {
             Inventory.Instance.itemHighlightObject.ShowItem(this);

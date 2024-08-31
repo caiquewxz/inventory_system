@@ -80,8 +80,19 @@ public class Inventory : MonoBehaviour
         Cursor.lockState = CursorLockMode.Locked;
     }
 
+    public void CollectItem(SlotItem item)
+    {
+        Collectable newCollectable = inventoryObject.AddComponent<Collectable>();
+        newCollectable.quantity = item.quantity;
+        newCollectable.itemData = item.itemData;
+        newCollectable.collectablePrefab = item.collectablePrefab;
+        
+        CollectItem(newCollectable, true);
+        
+        Destroy(newCollectable);
+    }
     //método de coletar item.
-    public void CollectItem(Collectable collectable)
+    public void CollectItem(Collectable collectable, bool isFromShop = false)
     {
         SlotItem availableSlot = GetFirstAvailableSlot(collectable);
         if (collectable.itemData.itemType == ItemType.Money)
@@ -95,7 +106,7 @@ public class Inventory : MonoBehaviour
             availableSlot.occupied = true;
             availableSlot.slotImage.sprite = collectable.itemData.sprite;
             availableSlot.itemData = collectable.itemData;
-            availableSlot.collectablePrefab = Instantiate(collectable.transform.parent.gameObject);
+            availableSlot.collectablePrefab = Instantiate(collectable.collectablePrefab);
             availableSlot.collectablePrefab.SetActive(false);
             availableSlot.SetQuantity(collectable.quantity + availableSlot.quantity);
 
@@ -113,7 +124,8 @@ public class Inventory : MonoBehaviour
                 availableSlot.quantityText.text = "";
             }
 
-            Destroy(collectable.transform.parent.gameObject);
+            if(!isFromShop)
+                Destroy(collectable.transform.parent.gameObject);
 
             itemHighlightObject.UncheckItemImage();
         }

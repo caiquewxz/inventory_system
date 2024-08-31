@@ -17,6 +17,6 @@ MonoBehaviour:
   maxQuantity: 3
   stackable: 1
   sprite: {fileID: 21300000, guid: 3feb6ebb377e1cf4f91a017319b96b83, type: 3}
-  collectablePrefab: {fileID: 30523404022518665, guid: 8355ab3a69dbb5a46b29cc26ee2e4f72, type: 3}
   itemType: 0
-  Value: 20
+  price: 5
+  value: 20

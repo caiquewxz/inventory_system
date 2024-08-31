@@ -4,12 +4,13 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using Unity.VisualScripting.Dependencies.NCalc;
 using UnityEngine;
+using UnityEngine.Serialization;
 using UnityEngine.UI;
 
 public class Merchant : MonoBehaviour
 {
     [SerializeField] private Text openStoreText;
-    [SerializeField] private GameObject storeObject;
+    [FormerlySerializedAs("storeObject")] [SerializeField] private Shop shopObject;
     [SerializeField] private bool isStoreOpen;
     
     private void Start()
@@ -51,13 +52,19 @@ public class Merchant : MonoBehaviour
 
     void OpenStore()
     {
-        storeObject?.gameObject.SetActive(true);
+        shopObject.gameObject.SetActive(true);
+        shopObject.Open();
         isStoreOpen = true;
+        Cursor.visible = true;
+        Cursor.lockState = CursorLockMode.None;
     }
 
     void CloseStore()
     {
-        storeObject?.gameObject.SetActive(false);
+        shopObject.Close();
+        shopObject.gameObject.SetActive(false);
         isStoreOpen = false;
+        Cursor.visible = false;
+        Cursor.lockState = CursorLockMode.Locked;
     }
 }
