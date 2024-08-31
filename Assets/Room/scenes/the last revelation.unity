@@ -452,6 +452,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4534449285516404, guid: 0941535f5a7c0d846a45a6370dc4036b, type: 3}
   m_PrefabInstance: {fileID: 695236724}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &233847999 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8750130123810865205, guid: c454e1ae9062d6e4aa420b441d707510, type: 3}
+  m_PrefabInstance: {fileID: 1497728825}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &234124741
 GameObject:
   m_ObjectHideFlags: 0
@@ -1491,6 +1502,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5962277235282824590, guid: b304aed65f79a4445ba06ea6f683888e, type: 3}
+      propertyPath: playerHpText
+      value: 
+      objectReference: {fileID: 233847999}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -2994,7 +3009,7 @@ MonoBehaviour:
   isShopSlot: 1
   shopIndex: 0
   shop: {fileID: 936743829}
-  collectablePrefab: {fileID: 0}
+  collectablePrefab: {fileID: 30523404022518665, guid: 8355ab3a69dbb5a46b29cc26ee2e4f72, type: 3}
 --- !u!114 &1631404224 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 1227114356381604607, guid: db8ee20e967d9a941bb1747af8f1f396, type: 3}
