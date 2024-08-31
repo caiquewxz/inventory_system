@@ -13,11 +13,11 @@ public class SlotItem : MonoBehaviour
     public int quantity;
     public Image slotImage;
     public Image backgroundImage;
-    public float dropForce = 100f;
     public bool isShopSlot;
     public int shopIndex;
     [SerializeField] private Shop shop;
     [SerializeField] public GameObject collectablePrefab;
+    [SerializeField] private float dropForce = 100f;
 
     private Transform dropReference;
     private Health healthComponent;
@@ -106,7 +106,7 @@ public class SlotItem : MonoBehaviour
     {
         if (itemData && itemData.itemType == ItemType.Potion)
         {
-            Health.Instance.PlayerHP += itemData.value;
+            Health.Instance.playerHP += itemData.value;
             SetQuantity(quantity - 1);
         }
     }

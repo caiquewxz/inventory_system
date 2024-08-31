@@ -7,10 +7,8 @@ using UnityEngine;
 
 public class Inventory : MonoBehaviour
 {
-
     private static Inventory _instance;
-
-    //singleton para acessar de qualquer lugar e haver apenas uma instância da classe Inventory.
+    
     public static Inventory Instance
     {
         get
@@ -97,7 +95,6 @@ public class Inventory : MonoBehaviour
         
         Destroy(newCollectable);
     }
-    //método de coletar item.
     public void CollectItem(Collectable collectable, bool isFromShop = false)
     {
         SlotItem availableSlot = GetFirstAvailableSlot(collectable);
@@ -124,7 +121,7 @@ public class Inventory : MonoBehaviour
                 CollectItem(collectable);
             }
 
-            //vse não for stackavel, esconde o texto de quantity
+            //se não for stackavel, esconde o texto de quantity
             if (!availableSlot.itemData.stackable)
             {
                 availableSlot.quantityText.text = "";

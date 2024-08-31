@@ -6,7 +6,7 @@ using UnityEngine.UI;
 
 public class Health : MonoBehaviour
 {
-    public int PlayerHP
+    public int playerHP
     {
         get => _playerHp;
         
@@ -26,8 +26,8 @@ public class Health : MonoBehaviour
     }
     [SerializeField] private int _playerHp = 50;
     
-    public int maxHp = 100;
-    public Text playerHpText;
+    [SerializeField] private int maxHp = 100;
+    [SerializeField] private Text playerHpText;
     
     public static Health Instance
     {
@@ -56,7 +56,7 @@ public class Health : MonoBehaviour
         }
         
         DontDestroyOnLoad(gameObject);
-        PlayerHP = _playerHp;
+        playerHP = _playerHp;
     }
     
 }

@@ -4,15 +4,14 @@ using UnityEngine;
 [RequireComponent(typeof(CharacterController))]
 public class PlayerMovement : MonoBehaviour
 {
-    public float speed = 6.0f;
-    public float jumpSpeed = 8.0f;
-    public float gravity = 20.0f;
-    public float mouseSensitivity = 100.0f;
-    public Transform playerCamera;
-    public float cameraPitch = 0.0f;
-    public float maxLookAngle = 85.0f;
-    public Animator animController;
-    public float animationSmoothFactor = 2;
+    [SerializeField] private float speed = 6.0f;
+    [SerializeField] private float gravity = 20.0f;
+    [SerializeField] private float mouseSensitivity = 100.0f;
+    [SerializeField] private Transform playerCamera;
+    [SerializeField] private float cameraPitch = 0.0f;
+    [SerializeField] private float maxLookAngle = 85.0f;
+    [SerializeField] private Animator animController;
+    [SerializeField] private float animationSmoothFactor = 2;
 
     private Vector3 moveDirection = Vector3.zero;
     private CharacterController controller;
@@ -38,7 +37,7 @@ public class PlayerMovement : MonoBehaviour
     void Start()
     {
         controller = GetComponent<CharacterController>();
-        Cursor.lockState = CursorLockMode.Locked; // Trava o cursor no centro da tela
+        Cursor.lockState = CursorLockMode.Locked;
     }
 
     void Update()
