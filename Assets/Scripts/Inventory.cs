@@ -107,6 +107,8 @@ public class Inventory : MonoBehaviour
             }
             
             Destroy(collectable.transform.parent.gameObject);
+            
+            itemHighlightObject.UncheckItemImage();
         }
     }
 

@@ -12,6 +12,7 @@ public class SlotItem : MonoBehaviour
     public Text quantityText;
     public int quantity;
     public Image slotImage;
+    public Image backgroundImage;
     public float dropForce = 100f;
     [HideInInspector] public GameObject collectablePrefab;
 
@@ -34,6 +35,7 @@ public class SlotItem : MonoBehaviour
         {
             Inventory.Instance.itemHighlightObject.ShowItem(this);
             Inventory.Instance.itemHighlightObject.gameObject.SetActive(true);
+            Inventory.Instance.itemHighlightObject.HighlightItemImage();
         }
     }
 
@@ -47,12 +49,15 @@ public class SlotItem : MonoBehaviour
             occupied = false;
             slotImage.sprite = null;
             itemData = null;
+            Inventory.Instance.itemHighlightObject.UncheckItemImage();
         }
     }
     
     //método que faz o item ser dropado.
     public void DropItem()
     {
+        Debug.Log(Inventory.Instance.itemHighlightObject.gameObject.name);
+        Inventory.Instance.itemHighlightObject.UncheckItemImage();
         GameObject spawnedCollectable = Instantiate(collectablePrefab, dropReference.position, dropReference.rotation);
         spawnedCollectable.SetActive(true);
         //verifica se o item que foi dropado é um coletável.
