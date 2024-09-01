@@ -2387,7 +2387,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7752776065853363856, guid: c454e1ae9062d6e4aa420b441d707510, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -50
+      value: -103
       objectReference: {fileID: 0}
     - target: {fileID: 7877752680488127269, guid: c454e1ae9062d6e4aa420b441d707510, type: 3}
       propertyPath: m_Sprite
@@ -3064,6 +3064,18 @@ PrefabInstance:
       propertyPath: m_Sprite
       value: 
       objectReference: {fileID: 21300000, guid: c0a4dbd800565744f88e28eb3394844b, type: 3}
+    - target: {fileID: 1227114356381604607, guid: db8ee20e967d9a941bb1747af8f1f396, type: 3}
+      propertyPath: m_Color.b
+      value: 0.6886792
+      objectReference: {fileID: 0}
+    - target: {fileID: 1227114356381604607, guid: db8ee20e967d9a941bb1747af8f1f396, type: 3}
+      propertyPath: m_Color.g
+      value: 0.6886792
+      objectReference: {fileID: 0}
+    - target: {fileID: 1227114356381604607, guid: db8ee20e967d9a941bb1747af8f1f396, type: 3}
+      propertyPath: m_Color.r
+      value: 0.6886792
+      objectReference: {fileID: 0}
     - target: {fileID: 1900163649204807517, guid: db8ee20e967d9a941bb1747af8f1f396, type: 3}
       propertyPath: m_Name
       value: ShopItemSlot
@@ -3164,6 +3176,18 @@ PrefabInstance:
       propertyPath: m_Sprite
       value: 
       objectReference: {fileID: 21300000, guid: 3feb6ebb377e1cf4f91a017319b96b83, type: 3}
+    - target: {fileID: 6800271175091674626, guid: db8ee20e967d9a941bb1747af8f1f396, type: 3}
+      propertyPath: m_Color.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6800271175091674626, guid: db8ee20e967d9a941bb1747af8f1f396, type: 3}
+      propertyPath: m_Color.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6800271175091674626, guid: db8ee20e967d9a941bb1747af8f1f396, type: 3}
+      propertyPath: m_Color.r
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7063514723743614421, guid: db8ee20e967d9a941bb1747af8f1f396, type: 3}
       propertyPath: m_FontData.m_Font
       value: 
