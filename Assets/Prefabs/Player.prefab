@@ -33,7 +33,6 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 5072730621105341931}
-  - {fileID: 2889791560684619035}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!143 &4967213102991477134
@@ -75,7 +74,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 3.5
-  jumpSpeed: 8
   gravity: 20
   mouseSensitivity: 100
   playerCamera: {fileID: 2889791560684619035}
@@ -155,12 +153,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6516944588406548620}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.054436047, y: -0, z: -0, w: 0.9985173}
-  m_LocalPosition: {x: 0, y: 1.28, z: -5.03}
+  m_LocalRotation: {x: 0.054436035, y: 0.00000005960463, z: -0.0000000018626447, w: 0.9985173}
+  m_LocalPosition: {x: 0, y: 1.28, z: -5.0300035}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 4068723208016083481}
+  m_Father: {fileID: 5072730621105341931}
   m_LocalEulerAnglesHint: {x: 6.241, y: 0, z: 0}
 --- !u!20 &5016953870775253185
 Camera:
@@ -253,6 +251,7 @@ Transform:
   m_Children:
   - {fileID: 1320554234467266381}
   - {fileID: 6947225370324443364}
+  - {fileID: 2889791560684619035}
   m_Father: {fileID: 4068723208016083481}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!136 &3870326030398910067
