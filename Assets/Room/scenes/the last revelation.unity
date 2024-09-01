@@ -223,7 +223,7 @@ RectTransform:
   m_AnchorMin: {x: 1, y: 0.5}
   m_AnchorMax: {x: 1, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 225, y: 500}
+  m_SizeDelta: {x: 225, y: 450}
   m_Pivot: {x: 1, y: 0.5}
 --- !u!114 &369074150
 MonoBehaviour:
@@ -2571,7 +2571,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9135069399848346115, guid: c454e1ae9062d6e4aa420b441d707510, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 0
+      value: -100
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
