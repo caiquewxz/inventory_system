@@ -13,7 +13,13 @@ MonoBehaviour:
   m_Name: Potion
   m_EditorClassIdentifier: 
   name: "Po\xE7\xE3o"
-  description: "Po\xE7\xE3o que enche a vida do jogador"
+  description: "A po\xE7\xE3o de cura \xE9 um l\xEDquido m\xE1gico de cor rubi resplandecente,
+    que brilha com a intensidade de mil s\xF3is encapsulados! Ao tocar teus l\xE1bios,
+    sua ess\xEAncia explode em um calor divino que percorre cada fibra do teu ser,
+    fechando feridas como se o pr\xF3prio tempo retrocedesse, e inundando teu corpo
+    com uma energia t\xE3o pura que faz teu cora\xE7\xE3o pulsar com a for\xE7a de
+    um trov\xE3o. \xC9 como beber a pr\xF3pria vida, renovando tua alma em um turbilh\xE3o
+    de vitalidade e poder!"
   maxQuantity: 3
   stackable: 1
   sprite: {fileID: 21300000, guid: 3feb6ebb377e1cf4f91a017319b96b83, type: 3}

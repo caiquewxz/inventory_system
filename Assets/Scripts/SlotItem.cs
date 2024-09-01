@@ -18,6 +18,7 @@ public class SlotItem : MonoBehaviour
     [SerializeField] private Shop shop;
     [SerializeField] public GameObject collectablePrefab;
     [SerializeField] private float dropForce = 100f;
+    [SerializeField] private Sprite slotSprite;
 
     private Transform dropReference;
     private Health healthComponent;
@@ -59,7 +60,10 @@ public class SlotItem : MonoBehaviour
         if (quantity <= 0)
         {
             occupied = false;
-            slotImage.sprite = null;
+            if (slotSprite)
+            {
+                slotImage.sprite = slotSprite;
+            }
             itemData = null;
             Inventory.Instance.itemHighlightObject.UncheckItemImage();
         }
@@ -97,7 +101,10 @@ public class SlotItem : MonoBehaviour
             SetQuantity(0);
             occupied = false;
             itemData = null;
-            slotImage.sprite = null;
+            if (slotSprite)
+            {
+                slotImage.sprite = slotSprite;
+            }
         }
         
     }

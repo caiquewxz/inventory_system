@@ -13,9 +13,14 @@ MonoBehaviour:
   m_Name: Money
   m_EditorClassIdentifier: 
   name: Dinheiro
-  description: "C\xE9dulas de dinheiro para fazer suas compras."
+  description: "As c\xE9dulas de dinheiro s\xE3o finas folhas de pergaminho, decoradas
+    com selos reais e desenhos elaborados. Cada uma simboliza riqueza e poder, sendo
+    validada por marcas secretas que garantem sua autenticidade. Elas circulam entre
+    mercadores e nobres, representando a confian\xE7a e prest\xEDgio do reino em
+    cada troca."
   maxQuantity: 100
   stackable: 1
   sprite: {fileID: 21300000, guid: 19b9124b9bb4ceb428a3727025b997cf, type: 3}
-  collectablePrefab: {fileID: 2515543518179228449, guid: c93ba0ce431552146a896352ba6e3543, type: 3}
   itemType: 2
+  price: 0
+  value: 0
